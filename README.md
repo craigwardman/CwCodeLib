@@ -1,7 +1,7 @@
 # CwCodeLib
 Useful utility classes organised as a Visual Studio Shared Project.
 
-I recommend adding this as a submodule within your target project's repo (I put these in a lib folder).  
+To use these classes I recommend adding this as a submodule within your target project's repo (I put these in a lib folder).  
 "git submodule add https://github.com/craigwardman/CwCodeLib.git CwCodeLib"
 
 
