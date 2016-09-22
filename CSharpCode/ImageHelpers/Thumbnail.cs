@@ -13,7 +13,6 @@ namespace CwCodeLib.ImageHelpers
     /// <remarks></remarks>
     public class Thumbnail
     {
-
         /// <summary>
         /// Generates a thumbnail of the given image using targetsize as the largest dimension
         /// </summary>
@@ -28,7 +27,7 @@ namespace CwCodeLib.ImageHelpers
 
             double ratio = 0;
 
-            //adjust the target size as necessary
+            // adjust the target size as necessary
             if (imgWidth > TargetSize || imgHeight > TargetSize)
             {
                 if (imgWidth > imgHeight)
@@ -51,7 +50,7 @@ namespace CwCodeLib.ImageHelpers
                 }
             }
 
-            //get whole numbers
+            // get whole numbers
             imgWidth = Convert.ToInt32(imgWidth);
             imgHeight = Convert.ToInt32(imgHeight);
 
@@ -85,9 +84,10 @@ namespace CwCodeLib.ImageHelpers
             double a1 = 0;
             double targetWidth = 0;
             double targetHeight = 0;
-            ///''''
+
+            // /''''
             //     '
-            ///''''
+            // /''''
             if (OriginalImage.Width > OriginalImage.Height)
             {
                 ww = maxWidth;
@@ -97,7 +97,8 @@ namespace CwCodeLib.ImageHelpers
                 a1 = pw / ww;
                 targetWidth = pw / a1;
                 targetHeight = ph / a1;
-                //just in case pic is still taller than available space
+
+                // just in case pic is still taller than available space
                 if (targetHeight > wh)
                 {
                     targetHeight = wh;
@@ -110,7 +111,7 @@ namespace CwCodeLib.ImageHelpers
             }
             else if (OriginalImage.Height > OriginalImage.Width)
             {
-                //picture is taller than wide
+                // picture is taller than wide
                 wh = maxHeight;
                 ww = maxWidth;
                 pw = OriginalImage.Width;
@@ -118,36 +119,37 @@ namespace CwCodeLib.ImageHelpers
                 a1 = ph / wh;
                 targetWidth = pw / a1;
                 targetHeight = ph / a1;
-                //just in case pic is still wider than available space
+                
+                // just in case pic is still wider than available space
                 if (targetWidth > ww)
                 {
                     targetWidth = ww;
                     targetHeight = targetWidth / OriginalImage.Width * OriginalImage.Height;
                 }
 
-                //'
-                //'
+                // '
+                // '
             }
+
             else
             {
-                //incase of perfect square
-                //fill the whole space
-                // ERROR: Not supported in C#: OnErrorStatement
-
+                // incase of perfect square
+                // fill the whole space
                 targetHeight = maxHeight;
                 targetWidth = maxWidth;
-                //make square again
-                //if available space is wider than tall
+
+                // make square again
+                // if available space is wider than tall
                 if (targetWidth > targetHeight)
                 {
                     targetWidth = targetHeight;
-                    //if available space is taller than wide
+                    // if available space is taller than wide
                 }
                 else if (targetHeight > targetWidth)
                 {
                     targetHeight = targetWidth;
                 }
-                //the available space was already square, skip to here
+                // the available space was already square, skip to here
             }
 
             return ResizeImage(OriginalImage, Convert.ToInt32(targetWidth), Convert.ToInt32(targetHeight));
@@ -155,20 +157,18 @@ namespace CwCodeLib.ImageHelpers
 
         private static Image ResizeImage(Image originalImage, int width, int height)
         {
-            //for speed, treat everything as a 32BPP ARGB JPEG for outputting
-
+            // for speed, treat everything as a 32BPP ARGB JPEG for outputting
             Image returnBmp = null;
             Rectangle thumbSizing = new Rectangle(0, 0, width, height);
 
-            //use a generate exception handler, just in case
-
+            // use a generate exception handler, just in case
             try
             {
-                //create a bitmap in memory and get a handle to its Graphics object
+                // create a bitmap in memory and get a handle to its Graphics object
                 returnBmp = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
                 using (Graphics g = Graphics.FromImage(returnBmp))
                 {
-                    //now copy the srcImage to the destination bitmap at required size
+                    // now copy the srcImage to the destination bitmap at required size
                     g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -181,7 +181,7 @@ namespace CwCodeLib.ImageHelpers
                     }
                     else
                     {
-                        //original is smaller than target, put it in the middle
+                        // original is smaller than target, put it in the middle
                         int x = 0;
                         int y = 0;
                         x = Convert.ToInt32((width / 2) - originalImage.Width / 2);
@@ -193,10 +193,10 @@ namespace CwCodeLib.ImageHelpers
             }
             catch (Exception ex)
             {
-                //free up resources
+                // free up resources
                 if (returnBmp != null) { returnBmp.Dispose(); returnBmp = null; }
 
-                //just create a JPEG with the words 'unavailable'
+                // just create a JPEG with the words 'unavailable'
                 returnBmp = new Bitmap(200, 15, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
                 using (Graphics g = Graphics.FromImage(returnBmp))
                 {

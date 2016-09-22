@@ -22,9 +22,7 @@ namespace CwCodeLib.ImageHelpers
 
                     image.Save(stream, ici, eps);
                 }
-
             }
-
         }
 
         public static void SaveJpeg(Image image, string filename, int qualityPercent)
@@ -54,6 +52,7 @@ namespace CwCodeLib.ImageHelpers
                     return encoders[j];
                 }
             }
+
             return null;
         }
     }
