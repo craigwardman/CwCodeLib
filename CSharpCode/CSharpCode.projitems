@@ -9,6 +9,8 @@
     <Import_RootNamespace>CSharpCode</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionHandling\ExceptionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FileHandlers\StreamedCSVReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Jpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Thumbnail.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\XmlFormatter.cs" />
