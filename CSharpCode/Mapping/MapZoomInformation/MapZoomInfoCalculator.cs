@@ -1,18 +1,18 @@
 ﻿using System;
-using Mapping.Domain.Services.MapZoomInfoCalculator.ZoomLevelCalculator;
+using CwCodeLib.Mapping.MapZoomInformation.ZoomLevelCalculator;
 
 namespace CwCodeLib.Mapping.MapZoomInformation
 {
-    internal class MapZoomInfoCalculatorService
+    internal class MapZoomInfoCalculator
     {
         private IZoomLevelCalculator zoomLevelCalculator;
 
-        public MapZoomInfoCalculatorService()
+        public MapZoomInfoCalculator()
             : this(new BingMapsZoomLevelCalculator())
         {
         }
 
-        public MapZoomInfoCalculatorService(IZoomLevelCalculator zoomLevelCalculator)
+        public MapZoomInfoCalculator(IZoomLevelCalculator zoomLevelCalculator)
         {
             if (zoomLevelCalculator == null)
             {

@@ -2,7 +2,7 @@
 
 namespace CwCodeLib.Mapping
 {
-    public class DistanceCalculatorService
+    public class DistanceCalculator
     {
         public double DistanceInKm(GeographicalPoint pointA, GeographicalPoint pointB)
         {
