@@ -4,34 +4,31 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CwCodeLib.Tests.Serialization
 {
     [TestClass]
-    public class XmlFormatterTests
+    public class BinaryFormatterTests
     {
         [TestMethod]
-        public void TestXmlSerialize()
+        public void TestBinarySerialize()
         {
             // arrange
             var subject = new TestDataContract() { Hello = "world", Goodbye = "universe" };
 
             // act
-            var xml = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Serialize(subject);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Serialize(subject);
 
             // assert
-            Assert.IsFalse(string.IsNullOrEmpty(xml));
-            Assert.IsTrue(xml.Contains("Hello"));
-            Assert.IsTrue(xml.Contains("world"));
-            Assert.IsTrue(xml.Contains("Goodbye"));
-            Assert.IsTrue(xml.Contains("universe"));
+            Assert.IsNotNull(bytes);
+            Assert.IsTrue(bytes.Length > 0);
         }
 
         [TestMethod]
-        public void TestXmlDeserialize()
+        public void TestBinaryDeserialize()
         {
             // arrange
             var original = new TestDataContract() { Hello = "world", Goodbye = "universe" };
-            var xml = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Serialize(original);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Serialize(original);
 
             // act
-            var deserialized = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Deserialize(xml);
+            var deserialized = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Deserialize(bytes);
 
             // assert
             Assert.AreEqual(original.Hello, deserialized.Hello);
@@ -45,10 +42,11 @@ namespace CwCodeLib.Tests.Serialization
             var subject = 1;
 
             // act
-            var xml = CwCodeLib.Serialization.XmlFormatter<int>.Serialize(subject);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<int>.Serialize(subject);
 
             // assert
-            Assert.IsFalse(string.IsNullOrEmpty(xml));
+            Assert.IsNotNull(bytes);
+            Assert.IsTrue(bytes.Length > 0);
         }
 
         [TestMethod]
@@ -58,10 +56,10 @@ namespace CwCodeLib.Tests.Serialization
             TestDataContract subject = null;
 
             // act
-            var xml = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Serialize(subject);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Serialize(subject);
 
             // assert
-            Assert.IsFalse(string.IsNullOrEmpty(xml));
+            Assert.IsNull(bytes);
         }
 
         [TestMethod]
@@ -71,8 +69,8 @@ namespace CwCodeLib.Tests.Serialization
             var subject = 1;
 
             // act
-            var xml = CwCodeLib.Serialization.XmlFormatter<int>.Serialize(subject);
-            var deserialized = CwCodeLib.Serialization.XmlFormatter<int>.Deserialize(xml);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<int>.Serialize(subject);
+            var deserialized = CwCodeLib.Serialization.BinaryFormatter<int>.Deserialize(bytes);
 
             // assert
             Assert.AreEqual(subject, deserialized);
@@ -85,13 +83,14 @@ namespace CwCodeLib.Tests.Serialization
             TestDataContract subject = null;
 
             // act
-            var xml = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Serialize(subject);
-            var deserialized = CwCodeLib.Serialization.XmlFormatter<TestDataContract>.Deserialize(xml);
+            var bytes = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Serialize(subject);
+            var deserialized = CwCodeLib.Serialization.BinaryFormatter<TestDataContract>.Deserialize(bytes);
 
             // assert
             Assert.IsNull(deserialized);
         }
 
+        [Serializable]
         public class TestDataContract
         {
             public string Hello { get; set; }

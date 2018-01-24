@@ -54,10 +54,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Encryption\SHA512Tests.cs" />
+    <Compile Include="Encryption\TripleDESTests.cs" />
+    <Compile Include="Encryption\MD5Tests.cs" />
     <Compile Include="ExceptionHandling\ExceptionExtensionTests.cs" />
     <Compile Include="IOHelpers\DirectoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileHandlers\StreamedCSVReaderTests.cs" />
+    <Compile Include="Serialization\BinaryFormatterTests.cs" />
     <Compile Include="Serialization\XmlFormatterTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
     /// Wraps the functionality of the XmlSerializer class.
     /// </summary>
     /// <remarks></remarks>
-    public class XmlFormatter<T>
+    public static class XmlFormatter<T>
     {
         /// <summary>
         /// Serialize the object to an XML string.

@@ -6,14 +6,18 @@
     <SharedGUID>a11a8985-3c5c-4563-87c7-639c678ce345</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>CSharpCode</Import_RootNamespace>
+    <Import_RootNamespace>CwCodeLib</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Encryption\MD5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Encryption\SHA512.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Encryption\TripleDES.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExceptionHandling\ExceptionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FileHandlers\StreamedCSVReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Jpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Thumbnail.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IOHelpers\Directory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\BinaryFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\XmlFormatter.cs" />
   </ItemGroup>
 </Project>
