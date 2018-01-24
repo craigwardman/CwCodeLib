@@ -14,6 +14,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Jpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Thumbnail.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IOHelpers\Directory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\BoundingBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\GeographicalPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\MapZoomInformation\MapZoomInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\MapZoomInformation\ZoomLevelCalculator\BingMapsZoomLevelCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\MapZoomInformation\ZoomLevelCalculator\IZoomLevelCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\MapZoomInformation\MapZoomInfoCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\DistanceCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mapping\Proximity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\XmlFormatter.cs" />
   </ItemGroup>
 </Project>
