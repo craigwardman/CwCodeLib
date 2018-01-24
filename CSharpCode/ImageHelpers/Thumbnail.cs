@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 
 namespace CwCodeLib.ImageHelpers
@@ -119,7 +115,7 @@ namespace CwCodeLib.ImageHelpers
                 a1 = ph / wh;
                 targetWidth = pw / a1;
                 targetHeight = ph / a1;
-                
+
                 // just in case pic is still wider than available space
                 if (targetWidth > ww)
                 {
@@ -130,7 +126,6 @@ namespace CwCodeLib.ImageHelpers
                 // '
                 // '
             }
-
             else
             {
                 // incase of perfect square
@@ -189,9 +184,8 @@ namespace CwCodeLib.ImageHelpers
                         g.DrawImage(originalImage, x, y, originalImage.Width, originalImage.Height);
                     }
                 }
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // free up resources
                 if (returnBmp != null) { returnBmp.Dispose(); returnBmp = null; }

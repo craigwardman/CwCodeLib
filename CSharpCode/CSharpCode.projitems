@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)FileHandlers\StreamedCSVReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Jpeg.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ImageHelpers\Thumbnail.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IOHelpers\Directory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\XmlFormatter.cs" />
   </ItemGroup>
 </Project>

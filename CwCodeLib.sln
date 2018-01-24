@@ -5,9 +5,22 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CSharpCode", "CSharpCode\CSharpCode.shproj", "{A11A8985-3C5C-4563-87C7-639C678CE345}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CwCodeLib.CSharpCode.Tests", "CwCodeLib.CSharpCode.Tests\CwCodeLib.CSharpCode.Tests.csproj", "{DF2EEB9D-E23E-4140-AB83-B7E624DA23FB}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CSharpCode\CSharpCode.projitems*{df2eeb9d-e23e-4140-ab83-b7e624da23fb}*SharedItemsImports = 4
 		CSharpCode\CSharpCode.projitems*{a11a8985-3c5c-4563-87c7-639c678ce345}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF2EEB9D-E23E-4140-AB83-B7E624DA23FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2EEB9D-E23E-4140-AB83-B7E624DA23FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2EEB9D-E23E-4140-AB83-B7E624DA23FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2EEB9D-E23E-4140-AB83-B7E624DA23FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace CwCodeLib.FileHandlers
 {
@@ -10,7 +9,6 @@ namespace CwCodeLib.FileHandlers
     internal class StreamedCSVReader : IDisposable
     {
         private System.IO.StreamReader fso;
-        private DataTable dt = new DataTable("rowData");
 
         private string delimiter = ",";
 
@@ -59,12 +57,10 @@ namespace CwCodeLib.FileHandlers
             set { this.allowMultiLineQuotes = value; }
         }
 
-        public DataRow ReadLine()
+        public string[] ReadLine()
         {
             string line = null;
             string[] items = null;
-
-            this.dt.Clear();
 
             long check = this.fso.BaseStream.Position;
 
@@ -106,36 +102,15 @@ namespace CwCodeLib.FileHandlers
 
                     items = line.Split(Convert.ToChar(this.Delimiter));
 
-                    // make sure we have enough columns, if not - add them..
-                    if (items.Length > this.dt.Columns.Count)
-                    {
-                        for (int colCount = this.dt.Columns.Count + 1; colCount <= items.Length; colCount++)
-                        {
-                            this.dt.Columns.Add("Column_" + colCount, typeof(string));
-                        }
-                    }
-
-                    // fix the formatting and put into the datatable
-                    System.Data.DataRow newRow = this.dt.NewRow();
+                    // swap the delimiter back in
                     for (int i = 0; i <= items.Length - 1; i++)
                     {
                         items[i] = items[i].Replace(((char)255).ToString(), this.Delimiter);
-
-                        newRow["Column_" + (i + 1)] = items[i];
                     }
-
-                    this.dt.Rows.Add(newRow);
                 }
             }
 
-            if (this.dt.Rows.Count > 0)
-            {
-                return this.dt.Rows[0];
-            }
-            else
-            {
-                return null;
-            }
+            return items;
         }
 
         // This code added by Visual Basic to correctly implement the disposable pattern.
@@ -154,7 +129,6 @@ namespace CwCodeLib.FileHandlers
                 if (disposing)
                 {
                     this.CloseStreamReader();
-                    this.dt.Dispose();
                 }
             }
 
